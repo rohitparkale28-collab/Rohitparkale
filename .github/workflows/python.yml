@@ -1,0 +1,41 @@
+name: Basic File and Python simple python code
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  Simple_Python_Code:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Display current directory
+        run: pwd
+
+      - name: List files
+        run: ls -la
+
+      - name: Show file data
+        run: |
+          echo "Files in the current directory:"
+          find . -maxdepth 2 -type f -print
+
+      - name: Create a text file
+        run: |
+          echo "Hello!" > output.txt
+          echo "This file was created during the DEV OPS practical ." >> output.txt
+          echo "this is the task given from Vishal Sir.">>output.txt
+
+      - name: Display created file
+        run: cat output.txt
+
+      - name: Run simple Python script
+        run: |
+          python3 - <<'PY'
+          print("Hello from Python!")
+          print("GitHub Actions is running the script successfully.")
+          print("I am in TY DATA SCIENCE student.")
+          PY
